@@ -1,4 +1,5 @@
 ## imports 
+#want to modify it to take download location as argument
 
 import urllib2
 import re

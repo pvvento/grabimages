@@ -1,6 +1,5 @@
 ## imports 
-#want to modify it to take download location as argument
-import argparse
+#want to implement passing source and target as arguments
 
 import urllib2
 import re
@@ -22,13 +21,12 @@ def process_url(raw_url):
      return raw_url
  
 url='' ## give the url here
-target='' ## give target location here
 parse_object=urlparse(url)
 dirname=basename(parse_object.path)
-if not os.path.exists(target):
-    os.mkdir(target)
-os.mkdir(target/+dirname)
-os.chdir(target/+dirname)
+if not os.path.exists('images'):
+    os.mkdir("images")
+os.mkdir("images/"+dirname)
+os.chdir("images/"+dirname)
  
 urlcontent=urllib2.urlopen(url).read()
 imgurls=re.findall('img .*?src="(.*?)"',urlcontent)
@@ -42,4 +40,4 @@ for imgurl in imgurls:
      output.close()
      os.remove(filename)
  except:
-     pass
+pass
